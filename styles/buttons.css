@@ -1,0 +1,51 @@
+.reg-block__buttons-block{
+	display: flex;
+	justify-content: space-around;
+	width:50%;
+	margin: 1.2rem auto;
+}
+
+.buttons-block__submit-button input[type="submit"]{
+	padding: 0.5rem 0.8rem;
+	background: transparent;
+	color: #fff;
+	font-size: 1.2rem;
+	outline: none;
+	border: 1px solid black;
+	cursor: pointer;
+	transition: all .2s ease-in-out .1s;
+}
+
+.buttons-block__submit-button input[type="submit"]:hover{
+	background: #c4d620;
+	color: black;
+}
+
+.buttons-block__submit-button input[type="submit"]:active{
+	background: #a1b300;
+	color: black;
+}
+
+.buttons-block__back-button a{
+	display: inline-block;
+	padding: 0.5rem 1.2rem;
+	background: transparent;
+	color: #fff;
+	font-size: 1.2rem;
+	text-decoration: none;
+	outline: none;
+	border: 1px solid black;
+	user-select: none;
+	-moz-user-select: none;
+	transition: all .2s linear .1s;
+}
+
+.buttons-block__back-button a:hover{
+	background: #c4d620;
+	color: black;
+}
+.buttons-block__back-button a:active{
+	background: #a1b300;
+	color: black;
+}
+

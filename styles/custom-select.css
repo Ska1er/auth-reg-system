@@ -39,6 +39,7 @@ details[open] {
 	cursor: pointer;
 	border-radius: 5px;
 	background-color: #fff;
+	height: 1.1rem;
 }
 summary::-webkit-details-marker{
 	display: none;
@@ -137,7 +138,4 @@ label {
 	display: block;
 	cursor: pointer;
 }
-
-
-
 
