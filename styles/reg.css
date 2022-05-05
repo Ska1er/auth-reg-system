@@ -1,0 +1,30 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.reg-block{
+	background-color:#573131;
+	color: #fff;
+	width: 40%;
+	padding: 0.5em 0.8em;
+	margin: 20px auto;
+	border-radius: 20px;
+}
+.reg-block__reg-form-block{
+	margin: 10px;
+}
+.reg-block__title{
+	text-align: center;
+	font-size:2em;
+	padding: 0px;
+	margin: 0px;
+}
+p, .reg-block__radio-label, .reg-block__checkbox-label{
+	font-size: 1.2rem;
+}
+.reg-block__gender-block-flex{
+	display:flex;
+	width: 50%;
+	justify-content: space-between;
+	margin-top: 5px;
+}
