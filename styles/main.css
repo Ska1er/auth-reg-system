@@ -2,7 +2,7 @@
 	margin: 0px;
 	padding: 0px;
 }
-.reg-block{
+.block { 
 	background-color:#573131;
 	color: #fff;
 	width: 40%;
@@ -10,10 +10,10 @@
 	margin: 20px auto;
 	border-radius: 20px;
 }
-.reg-block__reg-form-block{
+.form-block{
 	margin: 10px;
 }
-.reg-block__title{
+.title{
 	text-align: center;
 	font-size:2em;
 	padding: 0px;
