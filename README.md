@@ -1,2 +1,2 @@
 # auth-reg-system
-System of authorization and registration in PHP
+Simple system of authorization and registration in PHP
