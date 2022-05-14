@@ -6,17 +6,17 @@ There is only one table in the database - user. The table contains the following
 
 Script to create the table:
 
-CREATE TABLE `user` (
-  `name` varchar(30) NOT NULL,
-  `surname` varchar(30) NOT NULL,
-  `patronymic` varchar(30) NOT NULL,
-  `sex` char(1) NOT NULL,
-  `characters` varchar(250) NOT NULL,
-  `speciality` varchar(60) NOT NULL,
-  `login` varchar(50) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `id` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_login_unique` (`login`)
+CREATE TABLE user (
+  name varchar(30) NOT NULL,
+  surname varchar(30) NOT NULL,
+  patronymic varchar(30) NOT NULL,
+  sex char(1) NOT NULL,
+  characters varchar(250) NOT NULL,
+  speciality varchar(60) NOT NULL,
+  login varchar(50) NOT NULL,
+  password varchar(60) NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (id),
+  UNIQUE KEY user_login_unique (login)
 )
 
