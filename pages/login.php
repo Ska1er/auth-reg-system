@@ -26,29 +26,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	}
 
 	if(!$errors){
-		try {
-			$db = new MySqlHelper();
-			try {
-				$user = $db->getUserByLoginAndPassword($_POST['login'], $_POST['password']);
+		$db = new MySqlHelper();
+		$user = $db->getUserByLoginAndPassword($_POST['login'], $_POST['password']);
+		if(!is_null($user)){
+			if(session_status() == PHP_SESSION_NONE)
+				session_start();
 
-				if(!is_null($user)){
-					if(session_status() == PHP_SESSION_NONE)
-						session_start();
-
-					$_SESSION['currentUser'] = $user;
-					relocate('http://localhost/php-projects/auth-system/pages/profile.php');
-					die();
-				}
-				else{
-					$commonError = "Wrong login or password";
-				}
-			}
-			catch(DbOperationException $ex) {
-				$commonError = "Authorization user error: ".$ex->getMessage();
-			}	
+			$_SESSION['currentUser'] = $user;
+			relocate('http://localhost/php-projects/auth-system/pages/profile.php');
 		}
-		catch(DbConnectionException $ex) {
-			$commonError = "Database connection error: ".$ex->getMessage(); 
+		else{
+			$commonError = "Wrong login or password";
 		}
 	}
 }

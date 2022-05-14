@@ -11,7 +11,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if(empty($_SESSION['currentUser'])) {
 	relocate('http://localhost/php-projects/auth-system/pages/login.php');
-	die();
 }
 
 ?>

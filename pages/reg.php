@@ -20,7 +20,6 @@ function getStringCharacters(array $characters) {
 
 if(!empty($_SESSION['currentUser'])){
 	relocate('http://localhost/php-projects/auth-system/pages/profile.php');
-	die();
 }
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$errors = false;
@@ -63,19 +62,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$_POST['login'], $_POST['password'], $_POST['gender'],
 		   	$_POST['speciality'], getStringCharacters($_POST['characters']));
 
-		try {
-			$db = new MySqlHelper();
-			try {
-				$db->addUser($user);
-				relocate("http://localhost/php-projects/auth-system/pages/login.php");
-			}
-			catch(DbOperationException $ex) {
-				$commonError = "Registration user error: ".$ex->getMessage();
-			}	
-		}
-		catch(DbConnectionException $ex) {
-			$commonError = "Database connection error: ".$ex->getMessage(); 
-		}
+		$db = new MySqlHelper();
+		if($db->addUser($user))
+			relocate("http://localhost/php-projects/auth-system/pages/login.php");
+		else $commonError = "Registration error";
 	}
 }
 
