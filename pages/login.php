@@ -4,10 +4,7 @@ require_once('../helpers/MySqlHelper.php');
 require_once('../helpers/SessionHelper.php');
 require_once('../helpers/RelocationHelper.php');
 
-
-$loginError = $passwordError = $commonError = "";
-
-
+$errors = array();
 
 if(!empty($_SESSION['currentUser'])){
 	relocate('http://localhost/php-projects/auth-system/pages/profile.php');
@@ -15,14 +12,11 @@ if(!empty($_SESSION['currentUser'])){
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-	$errors = false;
 	if(empty($_POST['login'])) {
-		$loginError = 'Login is empty';
-		$errors = true;
+		$errors['login'] = 'Login is empty';
 	}
 	if(empty($_POST['password'])) {
-		$passwordError = 'Password is empty';
-		$errors = true;
+		$errors['password'] = 'Password is empty';
 	}
 
 	if(!$errors){
@@ -36,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			relocate('http://localhost/php-projects/auth-system/pages/profile.php');
 		}
 		else{
-			$commonError = "Wrong login or password";
+			$errors['common'] = "Wrong login or password";
 		}
 	}
 }
@@ -58,11 +52,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			<div class="login-block__login-form-block form-block">
 				<form class="login-block__login-form" action="" method="post">
 					<div class="login-block__input-text-block input-text-block">
-						<input class="login-block__input-text-name input-text" value="<?php if(isset($_POST['name'])) echo($_POST['name']); else echo("")?>" placeholder="" name="login" type="text"/>
+						<input class="login-block__input-text-name input-text" value="<?php if(isset($_POST['login'])) echo($_POST['login']); else echo("")?>" placeholder="" name="login" type="text"/>
 						<label class="login-block__text-label text-label">Login</label>
 						<div class="input-text-block__error-block error-block">
 							<p class="error-block__error-message">
-								<?=$loginError?>	
+								<?php if(isset($errors['login'])) echo $errors['login'];?>	
 							</p>
 						</div>
 					</div>
@@ -71,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 						<label class="login-block__text-label text-label">Password</label>
 						<div class="input-text-block__error-block error-block">
 							<p class="error-block__error-message">
-								<?=$passwordError?>	
+								<?php if(isset($errors['password'])) echo $errors['password']?>	
 							</p>
 						</div>
 					</div>
@@ -85,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 					</div>
 					<div class="reg-block__error-block error-block">
 						<p class="error-block__error-message">
-							<?=$commonError?>
+							<?php if(isset($errors['common'])) echo $errors['common']?>
 						</p>
 					</div>
 				</form>
